@@ -1,16 +1,7 @@
 package com.site.kang.vo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name="realTimeTopRank")
-public class RealTimeTopRank {
+public class topRank {
 	
-	@Id
-	@GeneratedValue
 	private int rank;
 	private String title;
 	private String artist;

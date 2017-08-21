@@ -20,19 +20,36 @@
 			<div class="span9" >
 				<legend>Kang Site</legend>
 				
-				<center>
-				<div style="margin:auto;">
-					<div class="fotorama" data-width="700" data-ratio="700/467" data-max-width="100%">
-				  		<img src="../../static/images/iu.jpg" class="img-fluid" alt="Responsive image">
-				  		<img src="../../static/images/iu.jpg" class="img-fluid" alt="Responsive image">
-				  		<img src="../../static/images/iu.jpg" class="img-fluid" alt="Responsive image">
-					</div>
-				</div>
-				</center>
-				
 				<br>
-
+				
+ 				<div id="accordion" role="tablist">
+					<c:forEach var="item" items="${realTimeChart}" varStatus="status">
+					<div class="card">
+						<div class="card-header" role="tab" id="headingOne">
+					    	<h5 class="mb-0">
+					      		<a data-toggle="collapse" href="#collapse${item.rank}" aria-expanded="true" aria-controls="collapseOne">
+					        		${item.rank}위&nbsp;&nbsp;&nbsp;${item.title}&nbsp;&nbsp;&nbsp;${item.artist}
+					      		</a>
+					    	</h5>
+						</div>
+						<div id="collapse${item.rank}" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+							<div class="card-body">
+						    	<center><iframe id="player_div" frameborder="0" allowfullscreen="1" title="YouTube video player" 
+											width="400" height="300" src="${item.url}"></iframe>
+								</center>
+					    	</div>
+						</div>
+					</div>
+					</c:forEach>
+					
+				</div>
+				
+				
+				
 				<table class="table table-bordered">
+					<tr>
+						<th style="text-align: center;" colspan="4">실시간 Top100</th>				
+					</tr>
 					<tr>
 						<th style="text-align: center;">Rank</th>
 						<th style="text-align: center;">Title</th>
@@ -50,6 +67,92 @@
 					</c:forEach>
 				</table>
 				
+				<table class="table table-bordered">
+					<tr>
+						<th style="text-align: center;" colspan="4">급상승 Top100</th>				
+					</tr>
+					<tr>
+						<th style="text-align: center;">Rank</th>
+						<th style="text-align: center;">Title</th>
+						<th style="text-align: center;">Artist</th>
+						<th style="text-align: center;">Url</th>
+					</tr>
+					
+					<c:forEach var="item" items="${riseChart}" varStatus="status">
+						<tr style="text-align: center;">
+							<td>${item.rank}</td>
+							<td>${item.title}</td>
+							<td>${item.artist}</td>
+							<td><a href="${item.url}">Click</a></td>
+						</tr>
+					</c:forEach>
+				</table>
+				
+				<table class="table table-bordered">
+					<tr>
+						<th style="text-align: center;" colspan="4">일간 Top100</th>				
+					</tr>
+					<tr>
+						<th style="text-align: center;">Rank</th>
+						<th style="text-align: center;">Title</th>
+						<th style="text-align: center;">Artist</th>
+						<th style="text-align: center;">Url</th>
+					</tr>
+					
+					<c:forEach var="item" items="${dailyChart}" varStatus="status">
+						<tr style="text-align: center;">
+							<td>${item.rank}</td>
+							<td>${item.title}</td>
+							<td>${item.artist}</td>
+							<td><a href="${item.url}">Click</a></td>
+						</tr>
+					</c:forEach>
+				</table>
+				
+				<table class="table table-bordered">
+					<tr>
+						<th style="text-align: center;" colspan="4">주간 Top100</th>				
+					</tr>
+					<tr>
+						<th style="text-align: center;">Rank</th>
+						<th style="text-align: center;">Title</th>
+						<th style="text-align: center;">Artist</th>
+						<th style="text-align: center;">Url</th>
+					</tr>
+					
+					<c:forEach var="item" items="${weeklyChart}" varStatus="status">
+						<tr style="text-align: center;">
+							<td>${item.rank}</td>
+							<td>${item.title}</td>
+							<td>${item.artist}</td>
+							<td><a href="${item.url}">Click</a></td>
+						</tr>
+					</c:forEach>
+				</table>
+				
+				<table class="table table-bordered">
+					<tr>
+						<th style="text-align: center;" colspan="4">월간 Top100</th>				
+					</tr>
+					<tr>
+						<th style="text-align: center;">Rank</th>
+						<th style="text-align: center;">Title</th>
+						<th style="text-align: center;">Artist</th>
+						<th style="text-align: center;">Url</th>
+					</tr>
+					
+					<c:forEach var="item" items="${monthlyChart}" varStatus="status">
+						<tr style="text-align: center;">
+							<td>${item.rank}</td>
+							<td>${item.title}</td>
+							<td>${item.artist}</td>
+							<td><a href="${item.url}">Click</a></td>
+						</tr>
+					</c:forEach>
+				</table>
+				
+				
+				
 			</div>
 		</div>
 	</div>
@@ -57,6 +160,10 @@
 	</body>
 		
 	<script type="text/javascript" src="../../resources/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../../resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../../resources/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="../../resources/js/fotorama-4.6.4/fotorama.js"></script>
+	<script type="text/javascript" src=../../resources/js/html5gallery/jquery.js"></script>
+	<script type="text/javascript" src="../../resources/js/html5gallery/html5gallery.js"></script>
+	
 </html>
