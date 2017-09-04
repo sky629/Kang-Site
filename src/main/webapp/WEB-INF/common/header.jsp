@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div class="well well-sm" align="center">
-  <img alt="" src="../../static/images/main.png">
+<!--   <img alt="" src="../../static/images/main.png"> -->
 </div>
 
   
@@ -22,11 +22,7 @@
 			</li>
 			</c:forEach>
 		</ul>
-	
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		</form>
+		
 	</div>
 	</h2>
 </nav>

@@ -1,7 +1,3 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,10 +16,8 @@
 
 </head>
 	<body>
-	<jsp:include page="../common/header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="row-fluid">
-	<!-- <jsp:include page="../common/submenu.jsp"></jsp:include> -->
 			<div class="span9" >
 				
 				<br>
@@ -36,14 +30,14 @@
 					</p>
 				
 				<ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search title">
-					<c:forEach var="item" items="${realTimeChart}" varStatus="status">
+					<#list realTimeChart as item>
 					    <li id="li-${item.rank}"><a v-on:click="change('${item.url}')">
 					    <img src="${item.icon}">
 					    <h2>${item.title}</h2>
 					    <p>${item.artist}</p></a>
 					        <a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop" data-id="${item.rank}">add album</a>
 					    </li>
-				    </c:forEach>
+				    </#list>
 				  
 				</ul>
 				<div data-role="popup" id="purchase" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
@@ -59,12 +53,11 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="../common/footer.jsp"></jsp:include>
 	</body>
 			
 
 <script type="text/javascript">
-		
+
 	var play = new Vue({
 		  el: '#play',
 		  data: {

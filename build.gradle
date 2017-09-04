@@ -14,8 +14,20 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0'
 sourceCompatibility = 1.8
+
+jar {
+    baseName = 'kang'
+    version = version
+    archiveName = 'kang.jar'
+    manifest {
+        attributes 'Main-Class': 'com.site.kang.KangApplication',
+                   'Implementation-Title': 'kang',
+                   'Implementation-Version': version
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
 
 repositories {
 	mavenCentral()
@@ -29,10 +41,12 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.2.1')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-freemarker')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	
 	compile('org.apache.tomcat.embed:tomcat-embed-jasper')
     compile('javax.servlet:jstl:1.2')
     
+    compile 'com.google.apis:google-api-services-urlshortener:v1-rev48-1.22.0'
 }
